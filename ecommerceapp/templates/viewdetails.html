@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styleviewdetails' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #ecf9ff;
+}
+
+body {
+  color: #272727;
+  font-family: 'Quicksand', serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  padding: 1rem;
+}
+
+.main{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.a {
+  color: #ffffff;
+  padding: 0.8rem;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-weight: 400;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+}
+
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards_item {
+  display: flex;
+  padding: 1rem;
+}
+
+@media (min-width: 40rem) {
+  .cards_item {
+    width: 50%;
+  }
+}
+
+@media (min-width: 56rem) {
+  .cards_item {
+    width: 33.3333%;
+  }
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card_content {
+  padding: 1rem;
+  background: linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%);
+}
+
+.card_title {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin: 0px;
+}
+
+.card_text {
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+}
+.made_by{
+  font-weight: 400;
+  font-size: 13px;
+  margin-top: 35px;
+  text-align: center;
+}
+</style>
+<body style>
+<div class="main">
+    <ul class="cards">
+    <li class="cards_item">
+      <div class="card">
+        <div class="card_image">
+            <img src="{{data.propic.url}}">
+            </div>
+        <div class="card_content">
+            <h4 class="card_title">Full name:{{data.fullname}}</h4>
+            <p class="card_text">Email:{{data.email}}</p>
+            <p class="card_text">phone:{{data.phone}}</p>
+            <p class="card_text">gender:{{data.gender}}</p>
+            <a href="http://127.0.0.1:8000/ecommerceapp/updateuserdetails/{{i.id}}">Update profile</a>
+            </div>
+      </div>
+    </li>
+        </ul>
+</div>
+
+
+<!--<div class="card">-->
+<!--<div class="card" style="width: 15rem;">-->
+<!--  <img src="{{data.propic.url}}" class="card-img-top" alt="...">-->
+<!--  <div class="card-body">-->
+<!--    <h5 class="card-title"></h5>-->
+<!--    <p class="card-text"></p>-->
+<!--  </div>-->
+<!--  <ul class="list-group list-group-flush">-->
+<!--    <li class="list-group-item">Full name:{{data.fullname}}</li>-->
+<!--    <li class="list-group-item">email:{{data.email}}</li>-->
+<!--    <li class="list-group-item">phone:{{data.phone}}</li>-->
+<!--      <li class="list-group-item">gender:{{data.gender}}</li>-->
+<!--  </ul>-->
+<!--  <div class="card-body">-->
+<!--    <a href="http://127.0.0.1:8000/ecommerceapp/updateuserdetails/{{i.id}}" class="card-link">Update profile</a>-->
+<!--    <a href="#" class="card-link"></a>-->
+<!--  </div>-->
+<!--</div>-->
+<!--</div>-->
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Title</title>
+</head>
+<body>
+ <h1 class="text-success text-center">
+       Address
+    </h1>
+ <div class="container mt-5 ">
+        <div class="row justify-content-center">
+            <div class="col-md-6 border border-white">
+               <form method="POST" id="addaddress">{% csrf_token %}
+                   <div class="form-group">
+                        <label>
+                            Address line 1
+                        </label>
+                       <input type="text"  class="form-control" placeholder="House name/building name" name="address_line1">
+                   </div>
+                   <div class="form-group">
+                       <label>Address line 2</label>
+                        <input type="text" class="form-control" placeholder="Road name/area/colony" name="address_line2">
+                   </div>
+                   <div class="form-group">
+                       <label>pincode</label>
+                      <input type="number" class="form-control" name="pincode">
+                   </div>
+                   <div class="form-group">
+                        <label>City</label>
+                        <input type="text" class="form-control"name="city">
+                   </div>
+                    <div class="form-group">
+                         <label>State</label>
+    <select name="state" class="form-control">
+        <option>kerala</option>
+        <option>Tamil nadu</option>
+        <option>Karnataka</option>
+    </select></div>
+                   <div class="form-group">
+                    <label>Contact Name</label>
+                   <input type="text" class="form-group" name="contact_name">
+                   </div>
+                   <div class="form-group">
+                        <label>Contact number</label>
+                        <input type="number" class="form-group" name="contact_number">
+                    </div>
+
+    <input type="submit"  class="btn btn-success" value="add address">
+               </form>
+            </div>
+        </div>
+ </div>
+</body>
+</html>

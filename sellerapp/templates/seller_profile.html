@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--<style>-->
+<!--    p {-->
+
+<!--  font-family: Arial, Helvetica, sans-serif;-->
+<!--  font-size:20px;-->
+<!--  text-align: center;-->
+<!--  margin-top: 20px;-->
+<!--  font-color:cyan;-->
+<!--  }-->
+
+
+<!--container{-->
+<!--  border-style: solid;-->
+<!--  border-color: red;-->
+<!--  border-width: 5px;-->
+<!--  margin-top: 30px;-->
+<!--  margin-bottom: 50px;-->
+<!--  margin-right: 100px;-->
+<!--  margin-left: 100px;-->
+<!--  height:150px;-->
+
+
+<!--}-->
+<!--img-->
+<!--{-->
+<!-- text-align: center;-->
+
+<!--}-->
+<!--card {-->
+<!--  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);-->
+<!--  margin: auto;-->
+<!--  text-align: center;-->
+<!--  font-family: arial;-->
+<!--  height:500px;-->
+<!--  width:500px;-->
+<!--}-->
+<!--price {-->
+<!--  color: grey;-->
+<!--  font-size: 22px;-->
+<!--}-->
+<!--card a {-->
+<!--  border: none;-->
+<!--  outline: 0;-->
+<!--  padding: 12px;-->
+<!--  color: white;-->
+<!--  background-color: #000;-->
+<!--  text-align: center;-->
+<!--  cursor: pointer;-->
+<!--  font-size: 18px;-->
+<!--}-->
+
+<!--</style>-->
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Seller Profile</h1>
+        </div>
+        <div class="col-6">
+            <div class="card border-primary mb-3" style="max-width: 18rem;">
+            <div class="card-header">{{data.username}}</div>
+            <div class="card-body text-primary">
+               <h5 class="card-title"></h5>
+               <p class="card-text">{{data.email}}</p>
+           </div>
+           </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <p>What are you shopping for today</p>
+        </div>
+        <div class="col-3">
+            <p><b><a href="?productcategory=all">ALL</a></b></p>
+        </div>
+        <div class="col-3">
+            <p><b><a href="?productcategory=male">Mens</a></b></p>
+        </div>
+        <div class="col-3">
+            <p><b><a href="?productcategory=female">Womens</a></b></p>
+        </div>
+        <div class="col-3">
+            <p><b><a href="?productcategory=kids">Kids</a></b></p>
+
+        </div>
+    </div>
+</div>
+
+
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col-12">-->
+<!--            <h3>Product catalog</h3>-->
+<!--        </div>-->
+<!--        {% for i in cart %}-->
+<!--         <div class="col-3">-->
+<!--             <div class="card" style="width: 18rem;">-->
+<!--               <img src="{{ i.productimage.url }}" class="card-img-top" alt="...">-->
+<!--                <div class="card-body">-->
+<!--                <h5 class="card-title">{{ i.productname }}</h5>-->
+<!--                    <p class="card-text">{{ i.productdescription }}</p>-->
+<!--                     <p class="card-text">{{ i.productprice }}</p>-->
+<!--                   <p>Size:</p>-->
+<!--                      <select name="productavailsize" required>-->
+<!--                          <option>&#45;&#45;select&#45;&#45;</option>-->
+<!--                         {% for j in i.productavailsize %}-->
+<!--                            <option value="{{ j }}">{{ j }}</option>-->
+<!--                         {% endfor %}-->
+<!--                      </select><br><br>-->
+<!--                    <br>-->
+
+
+<!--                <a href="http://127.0.0.1:8000/sellerappapp/delete/{{i.id}}" class="btn btn-primary">delete</a>-->
+<!--                <a href="http://127.0.0.1:8000/sellerappapp/edit/{{i.id}}"  class="btn btn-primary">edit</a>-->
+<!--                </div>-->
+<!--             </div>-->
+
+<!--        </div>-->
+
+<!--        {% endfor %}-->
+
+<!--    </div>-->
+<!--</div>-->
+<div class="container">
+<div class="row">
+    {% for i in cart %}
+<div class="col-3">
+    <div class="card" style="width: 18rem;">
+  <img src="{{ i.productimage.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{i.productname}}</h5>
+    <p class="card-text">{{i.productdescription}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{i.productprice}}</li>
+    <li class="list-group-item">
+        <select name="productavailsize" required>
+                          <option>--select--</option>
+                         {% for j in i.productavailsize %}
+                            <option value="{{ j }}">{{ j }}</option>
+                         {% endfor %}
+        </select>
+    </li>
+  </ul>
+  <div class="card-body">
+    <a href="http://127.0.0.1:8000/sellerapp/delete/{{i.id}}" class="card-link">Delete</a>
+    <a href="http://127.0.0.1:8000/sellerapp/edit/{{i.id}}" class="card-link">Edit</a>
+  </div>
+</div>
+
+</div>
+{% endfor %}
+
+</div>
+    </div>
+
+
+</body>
+</html>

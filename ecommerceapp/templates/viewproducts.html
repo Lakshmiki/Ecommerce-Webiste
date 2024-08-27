@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styleviewproduct.css' %}">
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+
+</head>
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'roboto', sans-serif;
+}
+
+.navbar{
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #f5f5f5;
+    z-index: 9;
+}
+
+.nav{
+    padding: 10px 10vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.brand-logo{
+    height: 25px;
+}
+
+.nav-items{
+    display: flex;
+    align-items: center;
+}
+
+.search{
+    width: 500px;
+    display: flex;
+}
+
+.search-box{
+    width: 80%;
+    height: 40px;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid #d1d1d1;
+    text-transform: capitalize;
+    background: none;
+    color: #a9a9a9;
+    outline: none;
+}
+
+.search-btn{
+    width: 20%;
+    height: 40px;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #383838;
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 15px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.search-box::placeholder{
+    color: #a9a9a9;
+}
+
+.nav-items a{
+    margin-left: 20px;
+}
+
+.nav-items a img{
+    width: 30px;
+}
+
+
+	</style>
+<body>
+<nav class="navbar">
+<div class="nav">
+    <img src="{% static 'image/maxlogo.png' %}" class="brand-logo" alt="">
+  <div class="nav-items">
+       <div class="search">
+           <input type="text" id="searchInput" class="form-control"
+            placeholder="search for products" onkeyup="filterItems()">
+
+        </div>
+  </div>
+</div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <p>What are you shopping for today</p>
+        </div>
+        <div class="col-3">
+            <p><b><a href="?productcategory=all">ALL</a></b></p>
+        </div>
+        <div class="col-3">
+            <p><b><a href="?productcategory=male">Mens</a></b></p>
+        </div>
+        <div class="col-3">
+            <p><b><a href="?productcategory=female">Womens</a></b></p>
+        </div>
+        <div class="col-3">
+            <p><b><a href="?productcategory=kids">Kids</a></b></p>
+
+        </div>
+        <div class="col-3">
+            <img src="{% static 'image/shopping bag logo.jpg' %}" class="rounded float-left" alt="" height="80px" width="80px">
+
+        </div>
+        <div class="col-3">
+            <img src="{% static 'image/mlogo.jpg' %}" class="rounded float-left" alt="" height="80px" width="80px">
+        </div>
+        <div class="col-3">
+            <img src="{% static 'image/womendresslogo.png' %}" height="80px" width="80px">
+
+        </div>
+        <div class="col-3">
+            <img src="{% static 'image/kidslogo.png' %}" height="80px" width="80px">
+
+        </div>
+    </div>
+</div>
+<div class="container border border-dark mt-4">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center align-item-center mt-3">
+            <h3>Product catalog</h3>
+        </div>
+        {% for i in db %}
+         <div class="col-4 d-flex justify-content-center align-item-center mt-4">
+             <div class="card" style="width: 18rem;">
+               <img src="{{ i.productimage.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">{{ i.productname }}</h5>
+                    <p class="card-text">{{ i.productdescription }}</p>
+                     <p class="card-text">{{ i.productprice }}</p>
+                     <form method="get" action="http://127.0.0.1:8000/ecommerceapp/addtocart/{{i.id}}?productavailsize={{ j }}">
+                   <p>Size:</p>
+                      <select name="productavailsize">
+                         {% for j in i.productavailsize %}
+                            <option value="{{ j }}">{{ j }}</option>
+                         {% endfor %}
+                      </select><br><br>
+                         <input type="submit" class="btn btn-primary" value="addtocart">
+                     </form>
+                    <br>
+
+
+                <a href="http://127.0.0.1:8000/ecommerceapp/wishlist/{{i.id}}" class="btn btn-primary">Wish list</a>
+                </div>
+             </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+        function filterItems()
+        {
+        var searchQuery=document.getElementById('searchInput').value.toUpperCase();
+        var cards=document.getElementsByClassName('card');
+        for(var i=0;i<cards.length;i++)
+          {
+            var title=cards[i].getElementsByClassName('card-title')[0];
+            if(title.innerText.toUpperCase().indexOf(searchQuery) > -1)
+              {
+               cards[i].style.display="";
+              }
+            else
+               {
+                cards[i].style.display="none";
+               }
+           }
+        }
+
+
+    </script>
+</body>
+</html>
+

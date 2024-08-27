@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styleupdateuserdetails.css' %}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+    <p><b>Please update your profile</b></p>
+        <hr>
+    <label><b>Fullname</b></label>
+        <input type="text" name="fullname" value="{{data.fullname}}"><br><br>
+
+    <label><b>Email Id</b></label>
+        <input type="text" name="email" value="{{data.email}}"><br><br>
+        <label><b>Phone Number</b></label>
+        <input type="number" name="phone" value="{{data.phone}}"><br><br>
+    <label><b>Gender</b></label>
+        <label>Male</label>
+        <input type="radio" name="gender" value="male" {% if data.gender == 'male' %} checked {% endif %}>
+        <label>Female</label>
+        <input type="radio" name="gender" value="female"{% if data.gender == 'female' %} checked {% endif %}><br><br>
+
+        <label><b>Profile picture</b></label>
+     <input type="file" name="propic"><br><br>
+    <img src="{{data.propic.url}}" height="100px" width="100px"><br><br>
+
+
+        <button type="submit" value="update">Update</button>
+
+
+
+</form>
+</div>
+
+
+</body>
+</html>

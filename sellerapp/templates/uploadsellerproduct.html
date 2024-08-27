@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>
+  Seller products
+</h2>
+<hr>
+<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+  <label><b>PRODUCT NAME</b></label>
+  <input type="text" name="productname"><br><br>
+  <label><b>PRODUCT PRICE</b></label>
+  <input type="number" name="productprice"><br><br>
+  <label><b>IMAGE</b></label>
+  <input type="file" name="productimage"><br><br>
+  <label><b>AVAILABLE SIZES</b></label>
+  <input type="text" name="productavailsize"><br><br>
+  <label><b>PRODUCT DESCRIPTION</b></label>
+  <input type="text" name="productdescription"><br><br>
+  <label>Product categroy</label>
+  <select name="productcategory">
+  <option>--select category--</option>
+  <option value="male">male</option>
+  <option value="female">Female</option>
+  <option value="kids">kids</option>
+  </select>
+  <input type="submit" name="uploadproductdetails">
+
+</form>
+
+</body>
+</html>

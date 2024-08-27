@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styleuserprofileview.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta charset="UTF-8">
+
+
+    <title>Title</title>
+</head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+
+.row {margin: 0 -5px;}
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+  .card1 {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  padding:10px;
+  transition: 0.3s;
+
+
+}
+
+.card1:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+.card1 img
+  {
+  border-radius:80%;
+  }
+</style>
+<body>
+<div class="row">
+    <div class="col-12">
+<h2>My Account</h2>
+<p>Manage yours orders and personal details</p>
+<hr>
+    </div>
+</div>
+<div class="card1">
+  <img src="{{data.propic.url}}" alt="propic" style="width:30%">
+  <div class="container">
+    <p><b>{{data.fullname}}</b></p><br><br>
+    <p>{{data.email}}</p>
+  </div>
+</div><br><br><br><br>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <h3>My Details</h3>
+      <p>Edit your details</p>
+      <p><a href="http://127.0.0.1:8000/ecommerceapp/viewdetails/{{i.id}}">View details</a></p>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <h3>Products</h3>
+      <p>Products for you.</p>
+      <p><a href="http://127.0.0.1:8000/ecommerceapp/viewproducts/{{i.id}}">View products</a></p>
+    </div>
+  </div><br><br><br><br><br><br><br><br><br><br>
+
+  <div class="column">
+    <div class="card">
+      <h3>My cart</h3>
+      <p>you cart is displayed here.</p>
+      <p><a href="http://127.0.0.1:8000/ecommerceapp/cartdisplay/{{i.id}}">cart display</a></p>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <h3>My Wishlist</h3>
+      <p>Shop 'til you drop</p>
+      <p><a href="http://127.0.0.1:8000/ecommerceapp/wishlistdisplay/">My Wishlist</a></p>
+    </div>
+  </div>
+</div>
+<a href="http://127.0.0.1:8000/ecommerceapp/change_password_user/" class="btn btn-success">Change Password </a>
+<a href="http://127.0.0.1:8000/ecommerceapp/logout/" class="btn btn-warning">Logout</a>
+
+<!--
+  <div class="row">-->
+<!--      <div class="col-12">-->
+<!--          <div class="card1" style="width: 15rem;">&ndash;&gt;-->
+<!--  <img src="{{data.propic.url}}" class="card-img-top" alt="..." height="150px" width="150px">-->
+<!--  <div class="card-body1">-->
+<!--      <p class="card-text1" ><b>{{data.fullname}}</b></p>-->
+<!--      <p><b>{{data.email}}</b></p>-->
+<!--  </div>-->
+<!--</div>-->
+<!--      </div>-->
+<!--  </div>-->
+
+
+
+
+
+
+
+
+<!--<div class="container1">&ndash;&gt;-->
+<!--    <div class="card">-->
+<!--    <div class="row">-->
+<!--        <div class="col-12">-->
+<!--             <img src="{{data.propic.url}}" style=width:10%;>-->
+<!--            <h5>{{data.fullname}}</h5>-->
+<!--            <h6>{{data.email}}</h6>-->
+<!--            <a href="http://127.0.0.1:8000/ecommerceapp/viewdetails/{{i.id}}">View details</a>-->
+<!--            <a href="http://127.0.0.1:8000/ecommerceapp/viewproducts/{{i.id}}">View products</a>-->
+<!--            <a href="http://127.0.0.1:8000/ecommerceapp/cartdisplay/{{i.id}}">cart display</a>-->
+<!--            <a href="http://127.0.0.1:8000/ecommerceapp/wishdisplay/">My Wishlist</a>-->
+<!--        </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--        </div>-->
+<!--    -->
+
+
+<!--  <div class="card">-->
+<!--  <h2>PROFILE</h2>-->
+<!--   <img src="{{data.propic.url}}" style=width:50%;>-->
+<!--    <h2>{{data.fullname}}</h2>-->
+<!--    <h3>{{data.email}}</h3>-->
+<!--<a href="http://127.0.0.1:8000/ecommerceapp/viewdetails/{{i.id}}">View details</a>-->
+<!--</div>-->
+
+
+<!--<a href="?productcategory=all">ALL</a>-->
+<!--<a href="?productcategory=male">Men</a>-->
+<!--<a href="?productcategory=female">Women</a>-->
+<!--<a href="?productcategory=kids">Kids</a>-->
+<!--<br>-->
+<!--<br>-->
+<!--{% for i in db %}-->
+<!--<div class="card" style="width: 18rem;">-->
+<!--<img src="{{i.productimage.url}}" class="card-img-top" alt="..." height="100px" width="100px">-->
+<!--  <div class="card-body">-->
+<!--    <h5 class="card-title">{{i.productname}}</h5>-->
+<!--    <p class="card-text">{{i.productdescription}}</p>-->
+<!--      <p class="card-text">{{i.productprice}}</p>-->
+<!--      <div class="card-body">-->
+<!--          <select name="productavailsize">-->
+<!--              {% for j in i.productavailsize %}-->
+<!--              <option value="{{ j }}">{{ j }}</option>-->
+<!--              {% endfor %}-->
+<!--          </select>-->
+<!--          <a href="http://127.0.0.1:8000/ecommerceapp/addtocart/{{i.id}}" class="btn btn-primary">Add to cart</a>-->
+<!--      <a href="#" class="btn btn-primary">Wish list</a>-->
+<!--          {% endfor %}-->
+
+<!-- </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class="container mt-4 mb-4 p-3 d-flex justify-content-center">-->
+<!--    <div class="card p-4"> <div class=" image d-flex flex-column justify-content-center align-items-center"> <button class="btn btn-secondary">-->
+<!--        <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" /></button>-->
+<!--        <span class="name mt-3">Eleanor Pena</span>-->
+<!--        <span class="idd">@eleanorpena</span>-->
+<!--        <div class="d-flex flex-row justify-content-center align-items-center gap-2">-->
+<!--            <span class="idd1">Oxc4c16a645_b21a</span> <span><i class="fa fa-copy"></i></span> </div>-->
+<!--        <div class="d-flex flex-row justify-content-center align-items-center mt-3">-->
+<!--            <span class="number">1069 <span class="follow">Followers</span></span> </div>-->
+<!--        <div class=" d-flex mt-2"> <button class="btn1 btn-dark">Edit Profile</button> </div>-->
+<!--        <div class="text mt-3"> <span>Eleanor Pena is a creator of minimalistic x bold graphics and digital artwork.<br><br> Artist/ Creative Director by Day #NFT minting@ with FND night. </span> </div>-->
+<!--        <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span>-->
+<!--            <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span>-->
+<!--        </div> <div class=" px-2 rounded mt-4 date "> <span class="join">Joined May,2021</span> </div>-->
+<!--    </div> </div>-->
+<!--</div>-->
+
+
+
+
+</body>
+</html>
